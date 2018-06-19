@@ -1,0 +1,32 @@
+server:
+  port: 5006
+spring:
+  application:
+    name: open-config
+  profiles:
+    active: dev
+  cloud:
+    config:
+      server:
+        git:
+          uri: https://gitee.com/onetoad/open-config-repo.git
+          username: admin@worldiis.com
+          password: Pm070818
+          clone-on-start: true
+eureka:
+  instance:
+    prefer-ip-address: true
+    instance-id: ${spring.cloud.client.ipAddress}:${server.port}
+  client:
+    service-url:
+      defaultZone: http://open-center1:5000/eureka/,http://open-center2:5001/eureka/
+---
+spring:
+  profiles: dev
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:5000/eureka/
+---
+spring:
+  profiles: env
