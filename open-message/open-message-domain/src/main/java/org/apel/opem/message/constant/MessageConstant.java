@@ -18,4 +18,11 @@ public interface MessageConstant {
          */
         String WAIT_VERIFY ="WAIT_VERIFY";
     }
+
+    interface  AlreadyDead{
+
+        String Y ="Y";
+
+        String N ="N";
+    }
 }

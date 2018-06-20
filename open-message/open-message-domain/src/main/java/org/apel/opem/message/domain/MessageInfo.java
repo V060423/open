@@ -41,7 +41,7 @@ public class MessageInfo {
     /**
      * 消息重试次数
      */
-    private Long messageSendTimes;
+    private Integer messageSendTimes;
 
 
     /**
@@ -70,12 +70,12 @@ public class MessageInfo {
     /**
      * 修改时间
      */
-    private Date modifyTime;
+    private Date updateTime;
 
     /**
      * 修改人
      */
-    private String  modifyBy;
+    private String  updateBy;
 
 
     /**

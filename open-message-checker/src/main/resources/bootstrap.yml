@@ -1,0 +1,95 @@
+server:
+  port: 6008
+spring:
+  application:
+    name: component-message
+  profiles:
+    active: dev
+  cloud:
+    config:
+      name: application
+      profile: base
+      label: master
+      discovery:
+        enabled: true
+        service-id: component-dispose
+  rabbitmq:
+    port: 5672
+    username: component
+    password: z2AfBmHfwiHGZbeBWwJM
+    virtual-host: /
+    publisher-returns: true
+    publisher-confirms: true
+eureka:
+  instance:
+    prefer-ip-address: true
+    instance-id: ${spring.cloud.client.ipAddress}:${server.port}
+  client:
+    serviceUrl:
+      defaultZone: http://component-center1:5000/eureka/,http://component-center2:5001/eureka/
+mybatis:
+  mapper-locations: classpath:mapper/*.xml
+  type-aliases-package: component.message.domain.entity
+message:
+  scheduled:
+    max-retry: 5
+    handle-max: 3
+    handle-limit: 1000
+    retry-delayed-millis:
+      - 60000     # 1   min
+      - 120000    # 2   min
+      - 180000    # 3   min
+      - 360000    # 6   min
+      - 720000    # 12  min
+    handle-timeout-millis: 180000  # 3   min
+i18n:
+  basename: message
+---
+spring:
+  profiles: dev
+  cloud:
+    config:
+      uri: http://localhost:5006
+      discovery:
+        enabled: false
+  rabbitmq:
+    host: 192.168.0.200
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:5000/eureka/
+local:
+  datasource:
+    url: jdbc:mysql://192.168.0.200:3306/component.message?useUnicode=true&characterEncoding=UTF8&useSSL=false
+    username: root
+    password: 19b2ca8b28fbf7cc2c2cfe8daf2dd3a3
+    driver-class-name: com.mysql.jdbc.Driver
+    min-evictable-idle-time-millis: 30000
+    initial-size: 10
+    min-idle: 15
+    max-active: 20
+    max-wait: 6000
+    validation-query: SELECT 1
+    test-on-borrow: false
+    test-on-return: false
+    test-while-idle: true
+---
+spring:
+  profiles: env
+  rabbitmq:
+    host: 10.1.0.8
+local:
+  datasource:
+    url: jdbc:mysql://10.0.0.3:3306/component.message?useUnicode=true&characterEncoding=UTF8&useSSL=false
+    username: root
+    password: e90e2c6f2f
+    driver-class-name: com.mysql.jdbc.Driver
+    min-evictable-idle-time-millis: 30000
+    initial-size: 10
+    min-idle: 15
+    max-active: 20
+    max-wait: 6000
+    validation-query: SELECT 1
+    test-on-borrow: false
+    test-on-return: false
+    test-while-idle: true

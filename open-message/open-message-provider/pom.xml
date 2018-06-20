@@ -10,6 +10,37 @@
     <modelVersion>4.0.0</modelVersion>
 
     <artifactId>open-message-provider</artifactId>
+    <dependencies>
+        <dependency>
+            <groupId>org.apel.open.message</groupId>
+            <artifactId>open-message-service</artifactId>
+            <version>1.0-SNAPSHOT</version>
+            <scope>compile</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.apel.open.message</groupId>
+            <artifactId>open-message-repository</artifactId>
+            <version>1.0-SNAPSHOT</version>
+            <scope>compile</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.apel.open.message</groupId>
+            <artifactId>open-message-domain</artifactId>
+            <version>1.0-SNAPSHOT</version>
+            <scope>compile</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-data-jpa</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.apel.open.common</groupId>
+            <artifactId>open-common</artifactId>
+            <version>1.0-SNAPSHOT</version>
+            <scope>compile</scope>
+        </dependency>
+
+    </dependencies>
 
 
 </project>
