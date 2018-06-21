@@ -3,6 +3,9 @@ package org.apel.open.model;
 
 import lombok.Data;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Table;
 import java.util.Date;
 
 /**
@@ -11,7 +14,9 @@ import java.util.Date;
  * @Date 2018/6/19 14:08
  */
 @Data
-public class RequestDataLog {
+@Entity
+@Table(name="common_log")
+public class CommonLog {
 
     /**
      * id
@@ -23,7 +28,6 @@ public class RequestDataLog {
      * 应用id
      */
     private Long  appId;
-
 
 
     /**

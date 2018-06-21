@@ -2,6 +2,8 @@ package org.apel.open.model;
 
 import lombok.Data;
 
+import javax.persistence.Entity;
+import javax.persistence.Table;
 import java.util.Date;
 
 /**
@@ -10,6 +12,8 @@ import java.util.Date;
  * @Date 2018/6/19 14:17
  */
 @Data
+@Entity
+@Table(name="trace_log")
 public class TraceLog {
 
     /**
